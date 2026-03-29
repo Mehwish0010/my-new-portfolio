@@ -96,7 +96,7 @@ export default function Work() {
               } bg-gradient-to-br ${project.gradient} flex items-end p-6`}
             >
               <div className="absolute top-5 left-6 flex items-center gap-3">
-                <span className="text-xs uppercase tracking-[0.2em] text-white/40 border border-white/10 rounded-full px-5 py-2">
+                <span className="text-xs uppercase tracking-[0.2em] text-white/40 border border-white/10 rounded-full px-6 py-3">
                   {project.category}
                 </span>
               </div>
@@ -122,7 +122,7 @@ export default function Work() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-5 py-2"
+                    className="text-xs uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-6 py-3"
                   >
                     {tag}
                   </span>

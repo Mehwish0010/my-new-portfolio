@@ -110,10 +110,10 @@ export default function Testimonials() {
                       <p className="text-[#666] text-xs">{testimonial.role}</p>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-[11px] uppercase tracking-wider text-accent border border-accent/30 rounded-full px-4 py-1.5">
+                      <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 rounded-full px-5 py-2">
                         Verified Quote
                       </span>
-                      <span className="text-[11px] uppercase tracking-wider text-[#888] border border-[#333] rounded-full px-4 py-1.5">
+                      <span className="text-xs uppercase tracking-wider text-[#888] border border-[#333] rounded-full px-5 py-2">
                         Sentiment: {testimonial.sentiment}
                       </span>
                     </div>

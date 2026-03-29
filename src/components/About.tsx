@@ -55,7 +55,7 @@ export default function About() {
           </p>
 
           {/* Experience badge */}
-          <div className="inline-flex items-center gap-4 border border-[#222] rounded-full px-8 py-4">
+          <div className="inline-flex items-center gap-5 border border-[#222] rounded-full px-10 py-5">
             <span className="text-3xl font-bold text-accent">02+</span>
             <span className="text-sm uppercase tracking-[0.2em] text-[#666]">
               Years of Craft
@@ -94,7 +94,7 @@ export default function About() {
               ].map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs text-[#888] border border-[#222] rounded-full px-5 py-2.5 hover:border-accent/40 hover:text-accent transition-colors duration-300"
+                  className="text-xs text-[#888] border border-[#222] rounded-full px-6 py-3 hover:border-accent/40 hover:text-accent transition-colors duration-300"
                 >
                   {tech}
                 </span>

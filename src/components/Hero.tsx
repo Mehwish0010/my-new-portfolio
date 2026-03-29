@@ -219,7 +219,7 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             download="Mehwish_Fatima_Resume.pdf"
-            className="flex-shrink-0 inline-flex items-center gap-3 border border-[#333] rounded-full px-10 py-4 text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
+            className="flex-shrink-0 inline-flex items-center gap-3 border border-[#333] rounded-full px-12 py-5 text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

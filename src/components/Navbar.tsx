@@ -56,7 +56,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="text-sm uppercase tracking-widest border border-[#333] rounded-full px-8 py-3 text-white hover:bg-white hover:text-black transition-all duration-300"
+          className="text-sm uppercase tracking-widest border border-[#333] rounded-full px-10 py-4 text-white hover:bg-white hover:text-black transition-all duration-300"
         >
           Contact
         </a>
