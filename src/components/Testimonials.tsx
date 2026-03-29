@@ -12,6 +12,7 @@ const testimonials = [
     author: "Sarah Chen",
     role: "CEO, TechVentures",
     sentiment: "Exceptional",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face",
   },
   {
     quote:
@@ -19,6 +20,7 @@ const testimonials = [
     author: "Ahmed Raza",
     role: "Founder, DataFlow AI",
     sentiment: "Outstanding",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face",
   },
   {
     quote:
@@ -26,6 +28,7 @@ const testimonials = [
     author: "Emily Park",
     role: "Head of Product, ScaleUp",
     sentiment: "Remarkable",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face",
   },
 ];
 
@@ -103,11 +106,18 @@ export default function Testimonials() {
                   </div>
 
                   <div className="flex items-center justify-between mt-6">
-                    <div>
-                      <p className="text-white font-semibold text-sm">
-                        {testimonial.author}
-                      </p>
-                      <p className="text-[#666] text-xs">{testimonial.role}</p>
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.author}
+                        className="w-11 h-11 rounded-full object-cover border-2 border-[#333]"
+                      />
+                      <div>
+                        <p className="text-white font-semibold text-sm">
+                          {testimonial.author}
+                        </p>
+                        <p className="text-[#666] text-xs">{testimonial.role}</p>
+                      </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 rounded-full px-5 py-2">

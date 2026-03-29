@@ -1,6 +1,7 @@
 "use client";
 
 const socials = [
+  { label: "Twitter", href: "https://twitter.com" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/mehwish-fatima-816198217" },
   { label: "GitHub", href: "https://github.com" },
 ];
@@ -15,7 +16,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright */}
         <p className="text-sm text-[#555] tracking-wider">
-          &copy; 2025 Mehwish Fatima. All Rights Reserved.
+          &copy; 2025 Creative Developer Portfolio. All Rights Reserved.
         </p>
 
         {/* Links */}

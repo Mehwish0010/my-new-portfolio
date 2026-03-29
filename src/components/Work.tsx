@@ -40,6 +40,18 @@ const projects = [
     liveUrl: "#",
     githubUrl: "#",
   },
+  {
+    num: "04",
+    title: "AI Workflow Engine",
+    subtitle: "Intelligent Automation Platform",
+    category: "AI / Automation",
+    description:
+      "An AI-powered workflow automation platform with n8n integration, custom agent pipelines, and real-time task orchestration for enterprise productivity.",
+    tags: ["Python", "n8n", "OpenAI API", "Next.js"],
+    gradient: "from-[#1a1a2e] via-[#0f3460] to-[#162447]",
+    liveUrl: "#",
+    githubUrl: "#",
+  },
 ];
 
 export default function Work() {
@@ -85,15 +97,11 @@ export default function Work() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 + i * 0.12 }}
-            className={`group border border-[#1a1a1a] rounded-xl overflow-hidden hover:border-[#333] transition-all duration-500 ${
-              i === 0 ? "md:col-span-2" : ""
-            }`}
+            className="group border border-[#1a1a1a] rounded-xl overflow-hidden hover:border-[#333] transition-all duration-500"
           >
             {/* Gradient image area */}
             <div
-              className={`relative h-48 ${
-                i === 0 ? "md:h-64" : "md:h-52"
-              } bg-gradient-to-br ${project.gradient} flex items-end p-6`}
+              className={`relative h-48 md:h-52 bg-gradient-to-br ${project.gradient} flex items-end p-6`}
             >
               <div className="absolute top-5 left-6 flex items-center gap-3">
                 <span className="text-xs uppercase tracking-[0.2em] text-white/40 border border-white/10 rounded-full px-6 py-3">
