@@ -42,7 +42,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section ref={ref} className="relative py-40 md:py-52">
+    <section ref={ref} className="relative py-44 md:py-56">
       <div className="px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto">
         {/* Section label */}
         <motion.div

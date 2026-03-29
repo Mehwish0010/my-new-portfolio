@@ -29,7 +29,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-44 md:py-56 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Label */}
       <motion.div
@@ -73,7 +73,7 @@ export default function Contact() {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="mt-28 grid md:grid-cols-3 gap-14 border-t border-[#1a1a1a] pt-14"
+        className="mt-32 grid md:grid-cols-3 gap-16 border-t border-[#1a1a1a] pt-16"
       >
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-2">

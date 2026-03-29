@@ -100,22 +100,34 @@ export default function Hero() {
         </div>
       </h1>
 
-      {/* Subtitle */}
-      <motion.p
+      {/* Subtitle + Resume button */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
-        className="text-sm text-[#666] max-w-lg leading-relaxed mt-8"
+        className="mt-10 flex flex-col sm:flex-row sm:items-center gap-8"
       >
-        Mehwish Fatima Full-Stack &amp; Agentic AI Developer. Developing autonomous intelligence layers and immersive digital interfaces.
-      </motion.p>
+        <p className="text-sm text-[#666] max-w-lg leading-relaxed">
+          Mehwish Fatima Full-Stack &amp; Agentic AI Developer. Developing autonomous intelligence layers and immersive digital interfaces.
+        </p>
+        <a
+          href="/resume.pdf"
+          download="Mehwish_Fatima_Resume.pdf"
+          className="flex-shrink-0 inline-flex items-center gap-3 border border-[#333] rounded-full px-14 py-6 text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Resume
+        </a>
+      </motion.div>
 
       {/* 3 Skill Cards shown simultaneously */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.7 }}
-        className="mt-16 mb-10"
+        className="mt-20 mb-12"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
           {skillCards.map((card, i) => (
@@ -124,7 +136,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 + i * 0.15, duration: 0.5 }}
-              className="border border-[#222] rounded-xl px-5 py-5 bg-[#111]/60 backdrop-blur-sm hover:border-[#333] transition-colors duration-300"
+              className="border border-[#222] rounded-xl px-6 py-6 bg-[#111]/60 backdrop-blur-sm hover:border-[#333] transition-colors duration-300"
             >
               <p className="text-[9px] uppercase tracking-[0.2em] text-[#555] mb-3">
                 {card.category}
@@ -154,29 +166,15 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-12"
+        className="mt-12 flex items-center gap-4"
       >
-        <div className="flex flex-col sm:flex-row items-start gap-5">
-          <a
-            href="/resume.pdf"
-            download="Mehwish_Fatima_Resume.pdf"
-            className="flex-shrink-0 inline-flex items-center gap-3 border border-[#333] rounded-full px-12 py-5 text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Resume
-          </a>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-          </span>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
-            Scroll to Explore
-          </span>
-        </div>
+        <span className="relative flex h-2 w-2">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
+          Scroll to Explore
+        </span>
       </motion.div>
 
       {/* Decorative grid lines */}

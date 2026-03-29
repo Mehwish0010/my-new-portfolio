@@ -58,7 +58,7 @@ export default function Work() {
     <section
       id="work"
       ref={ref}
-      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-44 md:py-56 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
@@ -82,7 +82,7 @@ export default function Work() {
       </motion.h2>
 
       {/* 2-column project grid */}
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-2 gap-12">
         {projects.map((project, i) => (
           <motion.div
             key={project.num}
@@ -115,7 +115,7 @@ export default function Work() {
             </div>
 
             {/* Card body */}
-            <div className="p-8 bg-[#0f0f0f]">
+            <div className="p-8 md:p-10 bg-[#0f0f0f]">
               <p className="text-sm text-[#888] leading-relaxed mb-6">
                 {project.description}
               </p>

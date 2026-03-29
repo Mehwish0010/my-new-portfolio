@@ -51,7 +51,7 @@ export default function Services() {
     <section
       id="services"
       ref={ref}
-      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-44 md:py-56 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div

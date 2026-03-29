@@ -24,14 +24,14 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-44 md:py-56 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-24"
+        className="flex items-center gap-4 mb-28"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           02
@@ -85,7 +85,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
+            className="mb-10"
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-5">
               Stack
