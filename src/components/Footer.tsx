@@ -11,7 +11,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#1a1a1a] py-10 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto">
+    <footer className="border-t border-[#1a1a1a] py-14 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright */}
         <p className="text-sm text-[#555] tracking-wider">

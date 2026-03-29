@@ -50,14 +50,14 @@ export default function Work() {
     <section
       id="work"
       ref={ref}
-      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-6"
+        className="flex items-center gap-4 mb-8"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           04
@@ -72,13 +72,13 @@ export default function Work() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-20"
+        className="text-2xl md:text-3xl font-bold text-white mb-24"
       >
         SELECTED ARCHIVE.
       </motion.h2>
 
       {/* 2-column project grid */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-10">
         {projects.map((project, i) => (
           <motion.div
             key={project.num}
@@ -112,13 +112,13 @@ export default function Work() {
             </div>
 
             {/* Card body */}
-            <div className="p-7 bg-[#0f0f0f]">
-              <p className="text-sm text-[#888] leading-relaxed mb-4">
+            <div className="p-8 bg-[#0f0f0f]">
+              <p className="text-sm text-[#888] leading-relaxed mb-5">
                 {project.description}
               </p>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-5">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}

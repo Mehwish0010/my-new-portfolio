@@ -51,14 +51,14 @@ export default function Services() {
     <section
       id="services"
       ref={ref}
-      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-6"
+        className="flex items-center gap-4 mb-8"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           03
@@ -73,12 +73,12 @@ export default function Services() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-20"
+        className="text-2xl md:text-3xl font-bold text-white mb-24"
       >
         Services designed to scale your vision.
       </motion.p>
 
-      <div className="grid md:grid-cols-[1fr,1fr] gap-14">
+      <div className="grid md:grid-cols-[1fr,1fr] gap-16">
         {/* Accordion list */}
         <div className="space-y-0">
           {services.map((service, i) => (
@@ -92,7 +92,7 @@ export default function Services() {
               }`}
               onClick={() => setActiveIndex(i)}
             >
-              <div className="flex items-center gap-6 py-7 px-4">
+              <div className="flex items-center gap-6 py-8 px-4">
                 <span
                   className={`text-3xl md:text-4xl font-bold transition-colors duration-300 ${
                     activeIndex === i ? "text-accent" : "text-[#333]"
@@ -118,7 +118,7 @@ export default function Services() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-4 pb-6 pl-[4.5rem]">
+                    <div className="px-4 pb-8 pl-[4.5rem]">
                       <p className="text-sm text-[#888] leading-relaxed mb-4">
                         {service.description}
                       </p>
@@ -164,7 +164,7 @@ export default function Services() {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.8, duration: 0.6 }}
-        className="mt-16 flex items-center gap-4"
+        className="mt-20 flex items-center gap-4"
       >
         <span className="h-px w-8 bg-[#333]" />
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">

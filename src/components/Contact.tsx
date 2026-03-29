@@ -29,14 +29,14 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-6"
+        className="flex items-center gap-4 mb-8"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           07
@@ -51,7 +51,7 @@ export default function Contact() {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-sm text-[#555] uppercase tracking-[0.2em] mb-4"
+        className="text-sm text-[#555] uppercase tracking-[0.2em] mb-6"
       >
         Got a vision?
       </motion.p>
@@ -73,7 +73,7 @@ export default function Contact() {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="mt-24 grid md:grid-cols-3 gap-12 border-t border-[#1a1a1a] pt-12"
+        className="mt-28 grid md:grid-cols-3 gap-14 border-t border-[#1a1a1a] pt-14"
       >
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-2">

@@ -42,14 +42,14 @@ export default function Process() {
     <section
       id="process"
       ref={ref}
-      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-6"
+        className="flex items-center gap-4 mb-8"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           06
@@ -64,7 +64,7 @@ export default function Process() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-24"
+        className="text-2xl md:text-3xl font-bold text-white mb-28"
       >
         THE EXECUTION.
       </motion.h2>
@@ -74,7 +74,7 @@ export default function Process() {
         {/* Vertical line */}
         <div className="absolute left-[19px] md:left-[23px] top-0 bottom-0 w-px bg-[#1a1a1a]" />
 
-        <div className="space-y-20">
+        <div className="space-y-24">
           {phases.map((phase, i) => (
             <motion.div
               key={phase.num}

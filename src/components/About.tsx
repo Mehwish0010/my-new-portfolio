@@ -12,14 +12,14 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-40 md:py-52 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-20"
+        className="flex items-center gap-4 mb-24"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           02
@@ -30,24 +30,24 @@ export default function About() {
         </span>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-20 items-start">
+      <div className="grid md:grid-cols-2 gap-24 items-start">
         {/* Left: text content */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8">
             Crafting digital systems that think, adapt, and deliver.
           </h2>
-          <p className="text-sm text-[#777] leading-loose mb-6">
+          <p className="text-sm text-[#777] leading-loose mb-8">
             I&apos;m Mehwish Fatima — a full-stack developer and AI engineer
             based in Karachi, Pakistan. With experience at THF Ventures and
             NovaDevs Studios, I build high-performance web applications and
             autonomous AI agents that transform ideas into intelligent,
             scalable products.
           </p>
-          <p className="text-sm text-[#777] leading-loose mb-10">
+          <p className="text-sm text-[#777] leading-loose mb-12">
             My approach combines deep technical expertise with a design-first
             mindset. I work with Next.js, TypeScript, FastAPI, Python, and AI
             tools like CrewAI and OpenAI APIs to deliver solutions that are both
@@ -72,9 +72,9 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-10"
+            className="mt-12"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-4">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-5">
               Tech Stack
             </p>
             <div className="flex flex-wrap gap-3">

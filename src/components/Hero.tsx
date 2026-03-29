@@ -98,13 +98,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-24 pb-16">
+    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-28 pb-24">
       {/* Top labels */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="flex items-center gap-6 mb-14"
+        className="flex items-center gap-6 mb-16"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           Available for Freelance
@@ -139,7 +139,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.7 }}
-        className="mt-16 mb-8"
+        className="mt-20 mb-10"
       >
         <div className="relative h-[120px] md:h-[100px] max-w-xl overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
@@ -209,7 +209,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-10"
+        className="mt-14 flex flex-col md:flex-row md:items-end justify-between gap-12"
       >
         <div className="flex flex-col sm:flex-row items-start gap-5">
           <p className="text-sm text-[#666] max-w-md leading-relaxed">

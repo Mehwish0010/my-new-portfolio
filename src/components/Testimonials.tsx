@@ -39,14 +39,14 @@ export default function Testimonials() {
   };
 
   return (
-    <section ref={ref} className="relative py-36 md:py-44">
+    <section ref={ref} className="relative py-40 md:py-52">
       <div className="px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto">
         {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-6"
+          className="flex items-center gap-4 mb-8"
         >
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
             05
@@ -61,7 +61,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-2xl md:text-3xl font-bold text-white mb-20"
+          className="text-2xl md:text-3xl font-bold text-white mb-24"
         >
           The Impact of Thoughtful Design.
         </motion.h2>
@@ -71,7 +71,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative h-[350px] max-w-2xl mx-auto mb-10"
+          className="relative h-[350px] max-w-2xl mx-auto mb-12"
         >
           {testimonials.map((testimonial, i) => {
             const adjustedIndex =
@@ -125,7 +125,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Swipe instruction */}
-        <p className="text-center text-[10px] uppercase tracking-[0.3em] text-[#444] mb-20">
+        <p className="text-center text-[10px] uppercase tracking-[0.3em] text-[#444] mb-24">
           Swipe card to cycle
         </p>
       </div>
