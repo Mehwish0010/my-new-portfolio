@@ -67,7 +67,7 @@ export default function Footer() {
       {/* Floating CTA */}
       <a
         href="mailto:mehwishsheikh0010sheikh@gmail.com"
-        className="fixed bottom-6 right-6 z-50 bg-accent text-black text-sm font-bold uppercase tracking-wider rounded-full px-10 py-5 hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20"
+        className="fixed bottom-6 right-6 z-50 bg-accent text-black text-sm font-bold uppercase tracking-wider rounded-full px-14 py-6 hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20"
       >
         Let&apos;s Talk
       </a>
