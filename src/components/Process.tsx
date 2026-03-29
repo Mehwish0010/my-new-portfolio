@@ -49,14 +49,14 @@ export default function Process() {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="flex items-center gap-4 mb-8"
+        className="flex items-center gap-4 mb-4"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           06
         </span>
         <span className="h-px w-8 bg-[#333]" />
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
-          Process
+          Operations Roadmap
         </span>
       </motion.div>
 
@@ -93,27 +93,23 @@ export default function Process() {
                     }}
                   />
                 </div>
-                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[8px] uppercase tracking-wider text-[#333] group-hover:text-[#555] transition-colors whitespace-nowrap">
-                  Interactive Node
-                </span>
               </div>
 
               {/* Content */}
               <div className="pt-1">
-                <div className="flex items-baseline gap-4 mb-3">
-                  <span className="text-sm font-mono text-accent">
-                    Phase {phase.num}
-                  </span>
-                  <span className="text-[#333]">—</span>
-                  <h3 className="text-lg font-bold text-white">
-                    {phase.title}
-                  </h3>
-                  <span className="text-[#333]">/</span>
-                  <span className="text-sm text-[#666]">{phase.subtitle}</span>
-                </div>
+                <span className="text-sm font-mono text-accent">
+                  Phase {phase.num}
+                </span>
+                <h3 className="text-lg font-bold text-white mt-2 mb-1">
+                  {phase.title}
+                </h3>
+                <h4 className="text-sm text-[#666] mb-3">{phase.subtitle}</h4>
                 <p className="text-sm text-[#777] leading-relaxed max-w-xl">
                   {phase.description}
                 </p>
+                <span className="inline-block mt-3 text-[8px] uppercase tracking-wider text-[#333] group-hover:text-[#555] transition-colors">
+                  Interactive Node
+                </span>
               </div>
             </motion.div>
           ))}

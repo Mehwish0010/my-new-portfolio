@@ -1,14 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-const line1 = "Building";
-const line2 = "Intelligent";
-const line3 = "Experiences.";
+import { motion } from "framer-motion";
 
 const skillCards = [
   {
+    category: "Autonomous Intelligence",
     title: "Agentic AI",
     description: "Building autonomous agents that think, plan, and execute",
     icon: (
@@ -20,6 +16,7 @@ const skillCards = [
     ),
   },
   {
+    category: "Modern Web",
     title: "Full-Stack Dev",
     description: "End-to-end web applications with modern frameworks",
     icon: (
@@ -31,6 +28,7 @@ const skillCards = [
     ),
   },
   {
+    category: "Visual Excellence",
     title: "Immersive UI",
     description: "Pixel-perfect interfaces with fluid animations",
     icon: (
@@ -65,38 +63,6 @@ function AnimatedWord({
 }
 
 export default function Hero() {
-  const [activeCard, setActiveCard] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  const cycleCard = useCallback(() => {
-    setDirection(1);
-    setActiveCard((prev) => (prev + 1) % skillCards.length);
-  }, []);
-
-  // Auto-cycle every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(cycleCard, 4000);
-    return () => clearInterval(interval);
-  }, [cycleCard]);
-
-  const handleDragEnd = (_: unknown, info: { offset: { x: number } }) => {
-    if (Math.abs(info.offset.x) > 60) {
-      if (info.offset.x > 0) {
-        setDirection(-1);
-        setActiveCard((prev) => (prev - 1 + skillCards.length) % skillCards.length);
-      } else {
-        setDirection(1);
-        setActiveCard((prev) => (prev + 1) % skillCards.length);
-      }
-    }
-  };
-
-  const cardVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 0.9 }),
-    center: { x: 0, opacity: 1, scale: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.9 }),
-  };
-
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-28 pb-24">
       {/* Top labels */}
@@ -118,13 +84,13 @@ export default function Hero() {
       {/* Main heading */}
       <h1 className="text-[clamp(3rem,8vw,8rem)] font-bold leading-[0.95] tracking-tight text-white">
         <div className="overflow-hidden">
-          <AnimatedWord word={line1} index={0} />
+          <AnimatedWord word="Building" index={0} />
         </div>
         <div className="overflow-hidden">
-          <AnimatedWord word={line2} index={1} />
+          <AnimatedWord word="Intelligent" index={1} />
         </div>
         <div className="overflow-hidden flex items-end gap-6">
-          <AnimatedWord word={line3} index={2} />
+          <AnimatedWord word="Experiences." index={2} />
           <motion.span
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -134,74 +100,53 @@ export default function Hero() {
         </div>
       </h1>
 
-      {/* Swipeable Skill Cards */}
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="text-sm text-[#666] max-w-lg leading-relaxed mt-8"
+      >
+        Mehwish Fatima Full-Stack &amp; Agentic AI Developer. Developing autonomous intelligence layers and immersive digital interfaces.
+      </motion.p>
+
+      {/* 3 Skill Cards shown simultaneously */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.7 }}
-        className="mt-20 mb-10"
+        className="mt-16 mb-10"
       >
-        <div className="relative h-[120px] md:h-[100px] max-w-xl overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
+          {skillCards.map((card, i) => (
             <motion.div
-              key={activeCard}
-              custom={direction}
-              variants={cardVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.5}
-              onDragEnd={handleDragEnd}
-              className="absolute inset-0 cursor-grab active:cursor-grabbing"
+              key={card.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 + i * 0.15, duration: 0.5 }}
+              className="border border-[#222] rounded-xl px-5 py-5 bg-[#111]/60 backdrop-blur-sm hover:border-[#333] transition-colors duration-300"
             >
-              <div className="flex items-center gap-5 h-full border border-[#222] rounded-xl px-6 py-5 bg-[#111]/60 backdrop-blur-sm hover:border-[#333] transition-colors duration-300">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                  {skillCards[activeCard].icon}
+              <p className="text-[9px] uppercase tracking-[0.2em] text-[#555] mb-3">
+                {card.category}
+              </p>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                  {card.icon}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-[10px] uppercase tracking-widest text-accent font-semibold">
-                      0{activeCard + 1} / 0{skillCards.length}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-white leading-tight">
-                    {skillCards[activeCard].title}
-                  </h3>
-                  <p className="text-sm text-[#777] mt-1 leading-snug">
-                    {skillCards[activeCard].description}
-                  </p>
-                </div>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 text-[#444]">
-                  <path d="M7 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <h3 className="text-base font-bold text-white leading-tight">
+                  {card.title}
+                </h3>
               </div>
+              <p className="text-xs text-[#777] leading-snug">
+                {card.description}
+              </p>
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
 
-        {/* Dots indicator + label */}
-        <div className="flex items-center gap-4 mt-4">
-          <div className="flex items-center gap-2">
-            {skillCards.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setDirection(i > activeCard ? 1 : -1);
-                  setActiveCard(i);
-                }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === activeCard ? "w-6 bg-accent" : "w-1.5 bg-[#333]"
-                }`}
-              />
-            ))}
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[#444]">
-            Swipe cards to cycle skills
-          </span>
-        </div>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[#444] mt-4">
+          Swipe cards to cycle skills
+        </p>
       </motion.div>
 
       {/* Bottom info */}
@@ -209,13 +154,9 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-14 flex flex-col md:flex-row md:items-end justify-between gap-12"
+        className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-12"
       >
         <div className="flex flex-col sm:flex-row items-start gap-5">
-          <p className="text-sm text-[#666] max-w-md leading-relaxed">
-            Full-stack developer & AI engineer crafting high-performance digital
-            products with modern web technologies and autonomous AI systems.
-          </p>
           <a
             href="/resume.pdf"
             download="Mehwish_Fatima_Resume.pdf"

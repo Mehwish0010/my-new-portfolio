@@ -49,14 +49,14 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-8"
+          className="flex items-center gap-4 mb-4"
         >
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
             05
           </span>
           <span className="h-px w-8 bg-[#333]" />
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
-            Testimonials
+            Social Proof
           </span>
         </motion.div>
 
@@ -124,7 +124,7 @@ export default function Testimonials() {
                         Verified Quote
                       </span>
                       <span className="text-xs uppercase tracking-wider text-[#888] border border-[#333] rounded-full px-5 py-2">
-                        Sentiment: {testimonial.sentiment}
+                        Sentiment
                       </span>
                     </div>
                   </div>

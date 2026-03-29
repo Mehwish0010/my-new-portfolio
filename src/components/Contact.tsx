@@ -77,7 +77,7 @@ export default function Contact() {
       >
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-2">
-            Email
+            Connect via Email
           </p>
           <a
             href="mailto:mehwishsheikh0010sheikh@gmail.com"
@@ -94,9 +94,9 @@ export default function Contact() {
         </div>
         <div>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-2">
-            Local Time (PKT)
+            Local Time
           </p>
-          <p className="text-sm text-[#999] font-mono">{time || "—"}</p>
+          <p className="text-sm text-[#999] font-mono">{time || "Loading..."} PKT</p>
         </div>
       </motion.div>
     </section>

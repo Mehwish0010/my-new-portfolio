@@ -34,15 +34,15 @@ export default function CodeBlock() {
           <span className="text-white">,</span>
         </div>
         <div className="pl-6">
-          <span className="text-[#9cdcfe]">title</span>
+          <span className="text-[#9cdcfe]">role</span>
           <span className="text-white">:</span>{" "}
           <span className="text-[#ce9178]">
-            &quot;Full-Stack Developer & AI Engineer&quot;
+            &quot;Full-Stack &amp; AI Developer&quot;
           </span>
           <span className="text-white">,</span>
         </div>
         <div className="pl-6">
-          <span className="text-[#9cdcfe]">stack</span>
+          <span className="text-[#9cdcfe]">tools</span>
           <span className="text-white">:</span>{" "}
           <span className="text-[#da70d6]">[</span>
           <span className="text-[#ce9178]">
@@ -53,25 +53,11 @@ export default function CodeBlock() {
           <span className="text-white">,</span>
         </div>
         <div className="pl-6">
-          <span className="text-[#9cdcfe]">focus</span>
+          <span className="text-[#9cdcfe]">quote</span>
           <span className="text-white">:</span>{" "}
           <span className="text-[#ce9178]">
-            &quot;Agentic AI &amp; Intelligent Systems&quot;
+            &quot;Build it right, make it intelligent.&quot;
           </span>
-          <span className="text-white">,</span>
-        </div>
-        <div className="pl-6">
-          <span className="text-[#9cdcfe]">location</span>
-          <span className="text-white">:</span>{" "}
-          <span className="text-[#ce9178]">
-            &quot;Karachi, Pakistan&quot;
-          </span>
-          <span className="text-white">,</span>
-        </div>
-        <div className="pl-6">
-          <span className="text-[#9cdcfe]">available</span>
-          <span className="text-white">:</span>{" "}
-          <span className="text-[#569cd6]">true</span>
           <span className="text-white">,</span>
         </div>
         <div>

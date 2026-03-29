@@ -4,6 +4,18 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import CodeBlock from "./ui/CodeBlock";
 
+const techStack = [
+  "Next.js",
+  "Tailwind",
+  "Python",
+  "Framer Motion",
+  "FastAPI",
+  "TypeScript",
+  "GitHub",
+  "OpenAI",
+  "Streamlit",
+];
+
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -38,20 +50,23 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-8">
-            Crafting digital systems that think, adapt, and deliver.
+            About Me
           </h2>
-          <p className="text-sm text-[#777] leading-loose mb-8">
-            I&apos;m Mehwish Fatima — a full-stack developer and AI engineer
-            based in Karachi, Pakistan. With experience at THF Ventures and
-            NovaDevs Studios, I build high-performance web applications and
-            autonomous AI agents that transform ideas into intelligent,
-            scalable products.
-          </p>
+
+          {/* Role badges */}
+          <div className="flex flex-wrap gap-3 mb-8">
+            <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 rounded-full px-5 py-2">
+              Full-Stack
+            </span>
+            <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 rounded-full px-5 py-2">
+              Agentic AI Developer
+            </span>
+          </div>
+
           <p className="text-sm text-[#777] leading-loose mb-12">
-            My approach combines deep technical expertise with a design-first
-            mindset. I work with Next.js, TypeScript, FastAPI, Python, and AI
-            tools like CrewAI and OpenAI APIs to deliver solutions that are both
-            beautiful and functional.
+            Hey! I&apos;m Mehwish Fatima, a developer who loves building things
+            that actually work and look good doing it. I craft high-performance
+            web apps and autonomous AI agents from Karachi, Pakistan.
           </p>
 
           {/* Experience badge */}
@@ -63,35 +78,20 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* Right: code block */}
+        {/* Right: stack + code block */}
         <div>
-          <CodeBlock />
-
-          {/* Tech Stack Grid */}
+          {/* Tech Stack Grid — above code block */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-12"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-8"
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#555] mb-5">
-              Tech Stack
+              Stack
             </p>
             <div className="flex flex-wrap gap-3">
-              {[
-                "Next.js",
-                "TypeScript",
-                "Python",
-                "FastAPI",
-                "React",
-                "Tailwind CSS",
-                "CrewAI",
-                "OpenAI API",
-                "Firebase",
-                "Vercel",
-                "n8n",
-                "Framer Motion",
-              ].map((tech) => (
+              {techStack.map((tech) => (
                 <span
                   key={tech}
                   className="text-xs text-[#888] border border-[#222] rounded-full px-6 py-3 hover:border-accent/40 hover:text-accent transition-colors duration-300"
@@ -101,6 +101,8 @@ export default function About() {
               ))}
             </div>
           </motion.div>
+
+          <CodeBlock />
         </div>
       </div>
     </section>

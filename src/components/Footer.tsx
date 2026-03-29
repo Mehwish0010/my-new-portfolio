@@ -70,7 +70,7 @@ export default function Footer() {
         href="mailto:mehwishsheikh0010sheikh@gmail.com"
         className="fixed bottom-8 right-10 z-50 bg-accent text-black text-sm font-bold uppercase tracking-wider rounded-full px-14 py-6 hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20"
       >
-        Let&apos;s Talk
+        LET&apos;S TALK
       </a>
     </footer>
   );
