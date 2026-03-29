@@ -11,10 +11,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[#1a1a1a] py-8 px-6 md:px-10 max-w-7xl mx-auto">
+    <footer className="border-t border-[#1a1a1a] py-10 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Copyright */}
-        <p className="text-[11px] text-[#555] tracking-wider">
+        <p className="text-sm text-[#555] tracking-wider">
           &copy; 2025 Mehwish Fatima. All Rights Reserved.
         </p>
 
@@ -26,7 +26,7 @@ export default function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] uppercase tracking-wider text-[#555] hover:text-white transition-colors"
+              className="text-sm uppercase tracking-wider text-[#555] hover:text-white transition-colors"
             >
               {s.label}
             </a>
@@ -43,7 +43,7 @@ export default function Footer() {
         {/* Back to top */}
         <button
           onClick={scrollToTop}
-          className="text-[11px] uppercase tracking-wider text-[#555] hover:text-accent transition-colors flex items-center gap-2"
+          className="text-sm uppercase tracking-wider text-[#555] hover:text-accent transition-colors flex items-center gap-2"
         >
           <span>Back to top</span>
           <svg
@@ -67,7 +67,7 @@ export default function Footer() {
       {/* Floating CTA */}
       <a
         href="mailto:mehwishsheikh0010sheikh@gmail.com"
-        className="fixed bottom-6 right-6 z-50 bg-accent text-black text-[11px] font-bold uppercase tracking-wider rounded-full px-5 py-3 hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20"
+        className="fixed bottom-6 right-6 z-50 bg-accent text-black text-sm font-bold uppercase tracking-wider rounded-full px-8 py-4 hover:scale-105 transition-transform duration-300 shadow-lg shadow-accent/20"
       >
         Let&apos;s Talk
       </a>

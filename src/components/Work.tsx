@@ -50,7 +50,7 @@ export default function Work() {
     <section
       id="work"
       ref={ref}
-      className="relative py-32 px-6 md:px-10 max-w-7xl mx-auto"
+      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
@@ -72,13 +72,13 @@ export default function Work() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-16"
+        className="text-2xl md:text-3xl font-bold text-white mb-20"
       >
         SELECTED ARCHIVE.
       </motion.h2>
 
       {/* 2-column project grid */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project, i) => (
           <motion.div
             key={project.num}
@@ -96,7 +96,7 @@ export default function Work() {
               } bg-gradient-to-br ${project.gradient} flex items-end p-6`}
             >
               <div className="absolute top-5 left-6 flex items-center gap-3">
-                <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 border border-white/10 rounded-full px-3 py-1">
+                <span className="text-xs uppercase tracking-[0.2em] text-white/40 border border-white/10 rounded-full px-5 py-2">
                   {project.category}
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function Work() {
             </div>
 
             {/* Card body */}
-            <div className="p-6 bg-[#0f0f0f]">
+            <div className="p-7 bg-[#0f0f0f]">
               <p className="text-sm text-[#888] leading-relaxed mb-4">
                 {project.description}
               </p>
@@ -122,7 +122,7 @@ export default function Work() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-3 py-1"
+                    className="text-xs uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-5 py-2"
                   >
                     {tag}
                   </span>
@@ -136,7 +136,7 @@ export default function Work() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] uppercase tracking-widest text-[#888] hover:text-accent transition-colors flex items-center gap-2"
+                    className="text-sm uppercase tracking-widest text-[#888] hover:text-accent transition-colors flex items-center gap-2"
                   >
                     <svg
                       width="12"
@@ -155,7 +155,7 @@ export default function Work() {
                     Visit Live Site
                   </a>
                 ) : (
-                  <span className="text-[11px] uppercase tracking-widest text-[#333] flex items-center gap-2">
+                  <span className="text-sm uppercase tracking-widest text-[#333] flex items-center gap-2">
                     <svg
                       width="12"
                       height="12"
@@ -178,7 +178,7 @@ export default function Work() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] uppercase tracking-widest text-[#888] hover:text-accent transition-colors flex items-center gap-2"
+                    className="text-sm uppercase tracking-widest text-[#888] hover:text-accent transition-colors flex items-center gap-2"
                   >
                     <svg
                       width="14"

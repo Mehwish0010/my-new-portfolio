@@ -34,7 +34,7 @@ export default function Navbar() {
         scrolled ? "bg-[#0a0a0a]/90 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex items-center justify-between h-18">
         <a
           href="#"
           className="text-sm font-bold tracking-widest text-white uppercase"
@@ -56,7 +56,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="text-xs uppercase tracking-widest border border-[#333] rounded-full px-5 py-2 text-white hover:bg-white hover:text-black transition-all duration-300"
+          className="text-sm uppercase tracking-widest border border-[#333] rounded-full px-8 py-3 text-white hover:bg-white hover:text-black transition-all duration-300"
         >
           Contact
         </a>

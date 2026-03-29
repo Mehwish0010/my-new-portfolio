@@ -51,7 +51,7 @@ export default function Services() {
     <section
       id="services"
       ref={ref}
-      className="relative py-32 px-6 md:px-10 max-w-7xl mx-auto"
+      className="relative py-36 md:py-44 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
@@ -73,12 +73,12 @@ export default function Services() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-16"
+        className="text-2xl md:text-3xl font-bold text-white mb-20"
       >
         Services designed to scale your vision.
       </motion.p>
 
-      <div className="grid md:grid-cols-[1fr,1fr] gap-10">
+      <div className="grid md:grid-cols-[1fr,1fr] gap-14">
         {/* Accordion list */}
         <div className="space-y-0">
           {services.map((service, i) => (
@@ -92,7 +92,7 @@ export default function Services() {
               }`}
               onClick={() => setActiveIndex(i)}
             >
-              <div className="flex items-center gap-6 py-6 px-4">
+              <div className="flex items-center gap-6 py-7 px-4">
                 <span
                   className={`text-3xl md:text-4xl font-bold transition-colors duration-300 ${
                     activeIndex === i ? "text-accent" : "text-[#333]"
@@ -126,7 +126,7 @@ export default function Services() {
                         {service.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-3 py-1"
+                            className="text-xs uppercase tracking-wider text-[#555] border border-[#222] rounded-full px-5 py-2"
                           >
                             {tag}
                           </span>

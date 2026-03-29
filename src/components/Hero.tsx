@@ -98,13 +98,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-10 max-w-7xl mx-auto pt-20">
+    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-24 pb-16">
       {/* Top labels */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8 }}
-        className="flex items-center gap-6 mb-10"
+        className="flex items-center gap-6 mb-14"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
           Available for Freelance
@@ -139,7 +139,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.0, duration: 0.7 }}
-        className="mt-14 mb-6"
+        className="mt-16 mb-8"
       >
         <div className="relative h-[120px] md:h-[100px] max-w-xl overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
@@ -209,7 +209,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="mt-6 flex flex-col md:flex-row md:items-end justify-between gap-8"
+        className="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-10"
       >
         <div className="flex flex-col sm:flex-row items-start gap-5">
           <p className="text-sm text-[#666] max-w-md leading-relaxed">
@@ -219,7 +219,7 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             download="Mehwish_Fatima_Resume.pdf"
-            className="flex-shrink-0 inline-flex items-center gap-2 border border-[#333] rounded-full px-6 py-2.5 text-xs uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
+            className="flex-shrink-0 inline-flex items-center gap-3 border border-[#333] rounded-full px-10 py-4 text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300"
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -239,7 +239,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Decorative grid lines */}
-      <div className="absolute top-0 right-6 md:right-10 h-full w-px bg-[#1a1a1a]" />
+      <div className="absolute top-0 right-8 md:right-16 lg:right-24 h-full w-px bg-[#1a1a1a]" />
       <div className="absolute top-0 right-[33%] h-full w-px bg-[#1a1a1a] hidden md:block" />
     </section>
   );
