@@ -3,66 +3,16 @@
 import { motion } from "framer-motion";
 
 const carouselCards = [
-  {
-    emoji: "🤖",
-    title: "Agentic AI",
-    subtitle: "Autonomous Systems",
-    accent: "#c0f03e",
-  },
-  {
-    emoji: "⚡",
-    title: "Next.js",
-    subtitle: "Full-Stack Framework",
-    accent: "#fff",
-  },
-  {
-    emoji: "🐍",
-    title: "Python",
-    subtitle: "AI & Backend",
-    accent: "#3776AB",
-  },
-  {
-    emoji: "🎨",
-    title: "Tailwind CSS",
-    subtitle: "Modern Styling",
-    accent: "#38BDF8",
-  },
-  {
-    emoji: "🧠",
-    title: "CrewAI",
-    subtitle: "Multi-Agent Orchestration",
-    accent: "#c0f03e",
-  },
-  {
-    emoji: "🔥",
-    title: "FastAPI",
-    subtitle: "High-Performance APIs",
-    accent: "#009688",
-  },
-  {
-    emoji: "📐",
-    title: "TypeScript",
-    subtitle: "Type-Safe Code",
-    accent: "#3178C6",
-  },
-  {
-    emoji: "🚀",
-    title: "Framer Motion",
-    subtitle: "Fluid Animations",
-    accent: "#FF0055",
-  },
-  {
-    emoji: "☁️",
-    title: "Cloud Deploy",
-    subtitle: "Vercel & AWS",
-    accent: "#FF9900",
-  },
-  {
-    emoji: "🔗",
-    title: "OpenAI",
-    subtitle: "LLM Integration",
-    accent: "#10A37F",
-  },
+  { title: "Agentic AI", subtitle: "Autonomous Systems", accent: "#c0f03e" },
+  { title: "Next.js", subtitle: "Full-Stack Framework", accent: "#fff" },
+  { title: "Python", subtitle: "AI & Backend", accent: "#3776AB" },
+  { title: "Tailwind CSS", subtitle: "Modern Styling", accent: "#38BDF8" },
+  { title: "CrewAI", subtitle: "Multi-Agent Orchestration", accent: "#c0f03e" },
+  { title: "FastAPI", subtitle: "High-Performance APIs", accent: "#009688" },
+  { title: "TypeScript", subtitle: "Type-Safe Code", accent: "#3178C6" },
+  { title: "Framer Motion", subtitle: "Fluid Animations", accent: "#FF0055" },
+  { title: "Cloud Deploy", subtitle: "Vercel & AWS", accent: "#FF9900" },
+  { title: "OpenAI", subtitle: "LLM Integration", accent: "#10A37F" },
 ];
 
 // Duplicate for seamless loop
@@ -142,7 +92,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0, duration: 0.8 }}
-        className="mt-16 mb-20 w-full overflow-hidden"
+        className="mt-16 mb-16 w-full overflow-hidden"
       >
         <div
           className="flex gap-5 w-max"
@@ -153,63 +103,64 @@ export default function Hero() {
           {doubledCards.map((card, i) => (
             <div
               key={i}
-              className="group relative flex-shrink-0 w-[220px] border border-[#1a1a1a] rounded-2xl bg-[#0f0f0f] p-6 hover:border-[#333] hover:bg-[#111] transition-all duration-300 cursor-default"
+              className="group relative flex-shrink-0 w-[240px] rounded-2xl p-[1px] cursor-default overflow-hidden"
+              style={{
+                background: `linear-gradient(135deg, ${card.accent}33, transparent 60%, ${card.accent}15)`,
+              }}
             >
-              {/* Accent glow line */}
-              <div
-                className="absolute top-0 left-6 right-6 h-px opacity-30 group-hover:opacity-60 transition-opacity"
-                style={{ backgroundColor: card.accent }}
-              />
-              {/* Emoji */}
-              <span className="text-3xl mb-4 block">{card.emoji}</span>
-              {/* Title */}
-              <h3 className="text-base font-bold text-white mb-1">
-                {card.title}
-              </h3>
-              {/* Subtitle */}
-              <p className="text-xs text-[#666] leading-snug">
-                {card.subtitle}
-              </p>
-              {/* Decorative dot */}
-              <div
-                className="absolute bottom-5 right-5 w-2 h-2 rounded-full opacity-40 group-hover:opacity-80 transition-opacity"
-                style={{ backgroundColor: card.accent }}
-              />
+              <div className="relative h-full rounded-2xl bg-[#0c0c0c] p-7 group-hover:bg-[#111] transition-colors duration-300">
+                {/* Accent bar top */}
+                <div
+                  className="w-10 h-1 rounded-full mb-5 opacity-60 group-hover:opacity-100 group-hover:w-16 transition-all duration-300"
+                  style={{ backgroundColor: card.accent }}
+                />
+                {/* Title */}
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-accent transition-colors duration-300">
+                  {card.title}
+                </h3>
+                {/* Subtitle */}
+                <p className="text-xs text-[#555] leading-relaxed group-hover:text-[#888] transition-colors duration-300">
+                  {card.subtitle}
+                </p>
+                {/* Corner accent */}
+                <div
+                  className="absolute bottom-0 right-0 w-16 h-16 rounded-tl-3xl opacity-[0.04] group-hover:opacity-[0.08] transition-opacity"
+                  style={{ backgroundColor: card.accent }}
+                />
+              </div>
             </div>
           ))}
         </div>
       </motion.div>
 
-      {/* Big Resume Button + Scroll */}
-      <div className="px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-10"
+      {/* Big Resume Button — centered */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="flex flex-col items-center gap-8 mt-4"
+      >
+        <a
+          href="/resume.pdf"
+          download="Mehwish_Fatima_Resume.pdf"
+          className="inline-flex items-center gap-4 bg-accent text-black font-bold rounded-full px-20 py-7 text-lg uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl shadow-accent/25"
         >
-          <a
-            href="/resume.pdf"
-            download="Mehwish_Fatima_Resume.pdf"
-            className="inline-flex items-center gap-4 bg-accent text-black font-bold rounded-full px-16 py-7 text-base uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-lg shadow-accent/20"
-          >
-            <svg width="18" height="18" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Download Resume
-          </a>
+          <svg width="20" height="20" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Download Resume
+        </a>
 
-          <div className="flex items-center gap-4">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-            </span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
-              Scroll to Explore
-            </span>
-          </div>
-        </motion.div>
-      </div>
+        <div className="flex items-center gap-4">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+          </span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
+            Scroll to Explore
+          </span>
+        </div>
+      </motion.div>
 
       {/* Decorative grid lines */}
       <div className="absolute top-0 right-8 md:right-16 lg:right-24 h-full w-px bg-[#1a1a1a]" />
