@@ -141,20 +141,22 @@ export default function Services() {
         </div>
 
         {/* Service image */}
-        <div className="hidden md:block relative h-[440px] rounded-lg overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={activeIndex}
-              src={services[activeIndex].image}
-              alt={services[activeIndex].title}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            />
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent" />
+        <div className="hidden md:flex items-center justify-center p-8">
+          <div className="relative w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-[#1a1a1a]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeIndex}
+                src={services[activeIndex].image}
+                alt={services[activeIndex].title}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 to-transparent" />
+          </div>
         </div>
       </div>
 
