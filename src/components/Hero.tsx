@@ -6,11 +6,11 @@ const carouselCards = [
   { title: "Agentic AI", subtitle: "Autonomous Systems", accent: "#c0f03e" },
   { title: "Next.js", subtitle: "Full-Stack Framework", accent: "#fff" },
   { title: "Python", subtitle: "AI & Backend", accent: "#3776AB" },
-  { title: "Tailwind CSS", subtitle: "Modern Styling", accent: "#38BDF8" },
+  { title: "n8n", subtitle: "Autonomous Workflows", accent: "#38BDF8" },
   { title: "CrewAI", subtitle: "Multi-Agent Orchestration", accent: "#c0f03e" },
   { title: "FastAPI", subtitle: "High-Performance APIs", accent: "#009688" },
   { title: "TypeScript", subtitle: "Type-Safe Code", accent: "#3178C6" },
-  { title: "Framer Motion", subtitle: "Fluid Animations", accent: "#FF0055" },
+  { title: "Kubernetes", subtitle: "Scalable Deployments", accent: "#FF0055" },
   { title: "Cloud Deploy", subtitle: "Vercel & AWS", accent: "#FF9900" },
   { title: "OpenAI", subtitle: "LLM Integration", accent: "#10A37F" },
 ];
@@ -143,7 +143,7 @@ export default function Hero() {
         <a
           href="/resume.pdf"
           download="Mehwish_Fatima_Resume.pdf"
-          className="group relative inline-flex items-center gap-5 rounded-full px-24 py-8 text-xl font-bold uppercase tracking-widest transition-all duration-400 overflow-hidden bg-accent text-black hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.03]"
+          className="group relative inline-flex items-center  mt-10  p-6 gap-5 rounded-full px-24 py-14 text-xl font-bold uppercase tracking-widest transition-all duration-400 overflow-hidden bg-accent text-black hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.03]"
         >
           {/* Shimmer effect */}
           <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
