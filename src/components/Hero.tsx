@@ -39,7 +39,7 @@ function AnimatedWord({
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-40 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-52 overflow-hidden">
       <div className="px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto w-full">
         {/* Top labels */}
         <motion.div
@@ -133,25 +133,27 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Big Resume Button — centered */}
+      {/* Resume Button — centered, pushed down */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="flex flex-col items-center gap-8 mt-4"
+        className="flex flex-col items-center gap-12 mt-16"
       >
         <a
           href="/resume.pdf"
           download="Mehwish_Fatima_Resume.pdf"
-          className="inline-flex items-center gap-4 bg-accent text-black font-bold rounded-full px-20 py-7 text-lg uppercase tracking-widest hover:bg-white transition-all duration-300 shadow-xl shadow-accent/25"
+          className="group relative inline-flex items-center gap-5 rounded-full px-24 py-8 text-xl font-bold uppercase tracking-widest transition-all duration-400 overflow-hidden bg-accent text-black hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.03]"
         >
-          <svg width="20" height="20" viewBox="0 0 14 14" fill="none">
+          {/* Shimmer effect */}
+          <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          <svg width="22" height="22" viewBox="0 0 14 14" fill="none" className="relative z-10">
             <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          Download Resume
+          <span className="relative z-10">Download Resume</span>
         </a>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mt-4">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
