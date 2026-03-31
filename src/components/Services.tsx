@@ -77,8 +77,8 @@ export default function Services() {
         Services designed to scale your vision.
       </motion.p>
 
-      <div className="grid md:grid-cols-[1fr,1fr] gap-16">
-        {/* Accordion list */}
+      <div className="grid md:grid-cols-[1fr,1fr] gap-16 items-start">
+        {/* Left: Accordion list */}
         <div className="space-y-0">
           {services.map((service, i) => (
             <motion.div
@@ -140,23 +140,61 @@ export default function Services() {
           <div className="border-t border-[#222]" />
         </div>
 
-        {/* Service image */}
-        <div className="hidden md:flex items-center justify-center p-8">
-          <div className="relative w-full max-w-[420px] aspect-square rounded-2xl overflow-hidden border border-[#1a1a1a]">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeIndex}
-                src={services[activeIndex].image}
-                alt={services[activeIndex].title}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 to-transparent" />
-          </div>
+        {/* Right: Image card with detail overlay */}
+        <div className="hidden md:block sticky top-32">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="relative rounded-2xl overflow-hidden border border-[#1a1a1a] bg-[#111]"
+            >
+              {/* Image */}
+              <div className="relative h-[280px] overflow-hidden">
+                <motion.img
+                  src={services[activeIndex].image}
+                  alt={services[activeIndex].title}
+                  initial={{ scale: 1.1 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/30 to-transparent" />
+
+                {/* Number badge on image */}
+                <span className="absolute top-5 right-5 text-5xl font-bold text-white/10">
+                  {services[activeIndex].num}
+                </span>
+              </div>
+
+              {/* Details below image */}
+              <div className="p-8">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-accent mb-3">
+                  Service {services[activeIndex].num}
+                </p>
+                <h4 className="text-xl font-bold text-white mb-3">
+                  {services[activeIndex].title}
+                </h4>
+                <p className="text-sm text-[#777] leading-relaxed mb-6">
+                  {services[activeIndex].description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {services[activeIndex].tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] uppercase tracking-wider text-accent/70 bg-accent/5 border border-accent/15 rounded-full px-4 py-2"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
