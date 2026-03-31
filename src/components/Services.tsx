@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import HexagonGrid from "./ui/HexagonGrid";
 
 const services = [
   {
@@ -141,21 +142,9 @@ export default function Services() {
           <div className="border-t border-[#222]" />
         </div>
 
-        {/* Service image */}
-        <div className="hidden md:block relative h-[400px] rounded-lg overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={activeIndex}
-              src={services[activeIndex].image}
-              alt={services[activeIndex].title}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0 w-full h-full object-cover rounded-lg"
-            />
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent" />
+        {/* Agentic AI Hexagon Diagram */}
+        <div className="hidden md:block relative h-[440px]">
+          <HexagonGrid />
         </div>
       </div>
 
