@@ -24,7 +24,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-44 md:py-56 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-48 md:py-60 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div

@@ -64,7 +64,7 @@ function AnimatedWord({
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-28 pb-24">
+    <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto pt-32 pb-32">
       {/* Top labels */}
       <motion.div
         initial={{ opacity: 0 }}
