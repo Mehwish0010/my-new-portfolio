@@ -37,9 +37,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Consistent section spacing */
+/* Consistent section spacing and readability */
 section {
   position: relative;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.8;
 }
 
 ::selection {

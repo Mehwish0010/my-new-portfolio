@@ -58,7 +58,7 @@ export default function Work() {
     <section
       id="work"
       ref={ref}
-      className="relative py-48 md:py-60 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative py-52 md:py-64 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Section label */}
       <motion.div
@@ -76,7 +76,7 @@ export default function Work() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-2xl md:text-3xl font-bold text-white mb-24"
+        className="text-2xl md:text-3xl font-bold text-white leading-snug mb-28"
       >
         SELECTED ARCHIVE.
       </motion.h2>
