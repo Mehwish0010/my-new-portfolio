@@ -4,13 +4,13 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Testimonials from "@/components/Testimonials";
-import Process from "@/components/Process";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import AppShell from "@/components/AppShell";
 
-function Divider() {
+function SectionGap() {
   return (
-    <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+    <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 py-10 md:py-16">
       <div className="h-px bg-[#1a1a1a]" />
     </div>
   );
@@ -18,24 +18,22 @@ function Divider() {
 
 export default function Home() {
   return (
-    <>
+    <AppShell>
       <Navbar />
       <main>
         <Hero />
-        <Divider />
+        <SectionGap />
         <About />
-        <Divider />
+        <SectionGap />
         <Services />
-        <Divider />
+        <SectionGap />
         <Work />
-        <Divider />
+        <SectionGap />
         <Testimonials />
-        <Divider />
-        <Process />
-        <Divider />
+        <SectionGap />
         <Contact />
       </main>
       <Footer />
-    </>
+    </AppShell>
   );
 }

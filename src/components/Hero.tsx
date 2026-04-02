@@ -32,42 +32,27 @@ function AnimatedWord({ word, index }: { word: string; index: number }) {
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col pt-36 pb-20 overflow-hidden">
+    <section className="relative flex flex-col min-h-screen justify-center pt-28 pb-20 overflow-hidden">
       <div className="px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto w-full">
 
-        {/* 1. Logo / Name — prominent */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
-            Mehwish Fatima
-          </h2>
-          <p className="text-xs uppercase tracking-[0.3em] text-accent mt-2">
-            Full-Stack &amp; Agentic AI Developer
-          </p>
-        </motion.div>
-
-        {/* 2. Top labels */}
+        {/* Top labels */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="flex items-center gap-6 mb-14"
+          className="flex items-center gap-6 mb-12"
         >
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
             Available for Freelance
           </span>
           <span className="h-px w-12 bg-[#333]" />
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#555]">
-            Based in Karachi
+            Open for Collaborations
           </span>
         </motion.div>
 
         {/* 3. Main heading — big gap above and below */}
-        <h1 className="text-[clamp(2.8rem,7vw,7rem)] font-bold leading-[0.95] tracking-tight text-white mb-10">
+        <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-[1] tracking-tight text-white mb-8">
           <div className="overflow-hidden">
             <AnimatedWord word="Building" index={0} />
           </div>
@@ -90,7 +75,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="text-sm text-[#666] max-w-xl leading-loose"
+          className="text-sm text-[#555] max-w-lg leading-relaxed"
         >
           Developing autonomous intelligence layers and immersive digital interfaces that push boundaries.
         </motion.p>
@@ -101,7 +86,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0, duration: 0.8 }}
-        className="mt-20 mb-24 w-full overflow-hidden"
+        className="mt-16 mb-10 w-full overflow-hidden"
       >
         <div
           className="flex gap-5 w-max"
@@ -136,23 +121,72 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* 6. Resume Button — centered, big, prominent */}
+      {/* 6. Resume Button — extraordinary animated button */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="flex flex-col items-center"
+        className="flex flex-col items-start mt-40 px-8 md:px-16 lg:px-24"
       >
         <a
           href="/resume.pdf"
           download="Mehwish_Fatima_Resume.pdf"
-          className="group relative inline-flex items-center justify-center gap-5 bg-accent text-black font-bold rounded-full text-xl uppercase tracking-widest overflow-hidden px-28 py-8 hover:shadow-2xl hover:shadow-accent/30 hover:scale-[1.03] transition-all duration-300"
+          className="group relative inline-flex items-center justify-center rounded-full p-[2px] cursor-pointer"
+          style={{ background: "conic-gradient(from var(--btn-angle, 0deg), #c0f03e, #38BDF8, #a855f7, #c0f03e)" }}
         >
-          <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-          <svg width="24" height="24" viewBox="0 0 14 14" fill="none" className="relative z-10">
-            <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <span className="relative z-10">Download Resume</span>
+          {/* Rotating border animation via inline style */}
+          <style>{`
+            @property --btn-angle {
+              syntax: "<angle>";
+              initial-value: 0deg;
+              inherits: false;
+            }
+            @keyframes rotate-border {
+              to { --btn-angle: 360deg; }
+            }
+            .resume-btn-wrap {
+              animation: rotate-border 3s linear infinite;
+            }
+            @keyframes btn-glow-pulse {
+              0%, 100% { box-shadow: 0 0 20px rgba(192, 240, 62, 0.15), 0 0 60px rgba(192, 240, 62, 0.05); }
+              50% { box-shadow: 0 0 30px rgba(192, 240, 62, 0.3), 0 0 80px rgba(192, 240, 62, 0.1); }
+            }
+          `}</style>
+          <span className="resume-btn-wrap absolute inset-0 rounded-full" style={{ background: "conic-gradient(from var(--btn-angle, 0deg), #c0f03e, #38BDF8, #a855f7, #c0f03e)" }} />
+
+          {/* Inner button */}
+          <span
+            className="relative z-10 inline-flex items-center gap-5 bg-[#0a0a0a] rounded-full px-14 py-6 group-hover:bg-[#111] transition-all duration-500"
+            style={{ animation: "btn-glow-pulse 3s ease-in-out infinite" }}
+          >
+            {/* Shimmer sweep */}
+            <span className="absolute inset-0 rounded-full overflow-hidden">
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            </span>
+
+            {/* Animated arrow */}
+            <span className="relative flex items-center justify-center w-10 h-10 rounded-full border border-accent/30 group-hover:border-accent group-hover:bg-accent/10 transition-all duration-500">
+              <svg width="18" height="18" viewBox="0 0 14 14" fill="none" className="group-hover:translate-y-0.5 transition-transform duration-300">
+                <path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M1 13h12" stroke="#c0f03e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+
+            {/* Text */}
+            <span className="relative z-10 flex flex-col items-start">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#555] group-hover:text-[#888] transition-colors duration-300">
+                
+              </span>
+              <span className="text-base font-bold uppercase tracking-widest text-white group-hover:text-accent transition-colors duration-500">
+                Resume
+              </span>
+            </span>
+
+            {/* Status dot */}
+            <span className="relative flex h-2 w-2 ml-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+            </span>
+          </span>
         </a>
 
         {/* Scroll indicator */}

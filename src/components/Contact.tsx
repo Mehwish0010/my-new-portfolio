@@ -29,7 +29,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-52 md:py-64 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
+      className="relative min-h-screen py-32 md:py-40 px-8 md:px-16 lg:px-24 max-w-[1400px] mx-auto"
     >
       {/* Label */}
       <motion.div
