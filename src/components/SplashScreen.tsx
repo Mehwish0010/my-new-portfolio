@@ -3,140 +3,211 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Deterministic seed-based random to avoid hydration mismatch
-function seededRandom(seed: number) {
+// Deterministic seed-based random
+function sr(seed: number) {
   const x = Math.sin(seed * 9301 + 49297) * 49297;
   return x - Math.floor(x);
 }
 
-// Floating particles
-function Particles() {
-  const particles = Array.from({ length: 40 }, (_, i) => ({
+// Neural network nodes and connections
+function NeuralNetwork() {
+  const nodes = Array.from({ length: 18 }, (_, i) => ({
     id: i,
-    x: seededRandom(i * 3 + 1) * 100,
-    y: seededRandom(i * 3 + 2) * 100,
-    size: seededRandom(i * 3 + 3) * 3 + 1,
-    duration: seededRandom(i * 7 + 4) * 4 + 3,
-    delay: seededRandom(i * 7 + 5) * 2,
+    cx: 10 + sr(i * 13 + 1) * 80,
+    cy: 10 + sr(i * 13 + 2) * 80,
+    r: sr(i * 13 + 3) * 2 + 1.5,
+    delay: sr(i * 13 + 4) * 2,
   }));
 
+  const connections: { x1: number; y1: number; x2: number; y2: number; delay: number }[] = [];
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const dx = nodes[i].cx - nodes[j].cx;
+      const dy = nodes[i].cy - nodes[j].cy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 30) {
+        connections.push({
+          x1: nodes[i].cx,
+          y1: nodes[i].cy,
+          x2: nodes[j].cx,
+          y2: nodes[j].cy,
+          delay: sr(i * 7 + j * 3) * 1.5,
+        });
+      }
+    }
+  }
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          initial={{ opacity: 0, y: `${p.y}%`, x: `${p.x}%` }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            y: [`${p.y}%`, `${p.y - 20}%`],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute rounded-full bg-accent"
-          style={{ width: p.size, height: p.size }}
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#c0f03e" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.05" />
+        </linearGradient>
+      </defs>
+      {connections.map((c, i) => (
+        <motion.line
+          key={i}
+          x1={c.x1} y1={c.y1} x2={c.x2} y2={c.y2}
+          stroke="url(#lineGrad)"
+          strokeWidth="0.15"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ duration: 1.5, delay: c.delay, ease: "easeOut" }}
         />
       ))}
-    </div>
+      {nodes.map((n) => (
+        <motion.circle
+          key={n.id}
+          cx={n.cx} cy={n.cy} r={n.r}
+          fill="none"
+          stroke="#c0f03e"
+          strokeWidth="0.2"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            scale: [0, 1, 1.2, 1],
+            opacity: [0, 0.4, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 2,
+            delay: n.delay,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      ))}
+      {/* Data pulses traveling along connections */}
+      {connections.slice(0, 8).map((c, i) => (
+        <motion.circle
+          key={`pulse-${i}`}
+          r="0.6"
+          fill="#c0f03e"
+          initial={{ cx: c.x1, cy: c.y1, opacity: 0 }}
+          animate={{
+            cx: [c.x1, c.x2],
+            cy: [c.y1, c.y2],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            delay: sr(i * 19 + 7) * 3,
+            repeat: Infinity,
+            repeatDelay: 2 + sr(i * 11) * 3,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </svg>
   );
 }
 
-// Animated wave bars loader
-function WaveLoader({ progress }: { progress: number }) {
-  const bars = 24;
+// Orbiting keywords around center
+function OrbitRing({ words, radius, duration, reverse = false }: {
+  words: string[];
+  radius: number;
+  duration: number;
+  reverse?: boolean;
+}) {
   return (
-    <div className="flex items-end gap-[3px] h-16 md:h-20 mb-10">
-      {Array.from({ length: bars }, (_, i) => {
-        const barProgress = Math.min(100, Math.max(0, (progress - i * (100 / bars)) * (bars / 30)));
-        const height = 20 + seededRandom(i * 11 + 7) * 80;
+    <motion.div
+      animate={{ rotate: reverse ? -360 : 360 }}
+      transition={{ duration, repeat: Infinity, ease: "linear" }}
+      className="absolute top-1/2 left-1/2"
+      style={{ width: radius * 2, height: radius * 2, marginLeft: -radius, marginTop: -radius }}
+    >
+      {words.map((word, i) => {
+        const angle = (360 / words.length) * i;
+        const rad = (angle * Math.PI) / 180;
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius;
         return (
-          <motion.div
-            key={i}
-            initial={{ scaleY: 0, opacity: 0 }}
-            animate={{
-              scaleY: [
-                seededRandom(i * 5 + 1) * 0.3 + 0.2,
-                seededRandom(i * 5 + 2) * 0.7 + 0.3,
-                seededRandom(i * 5 + 3) * 0.3 + 0.2,
-              ],
-              opacity: barProgress > 0 ? 1 : 0.15,
-            }}
-            transition={{
-              scaleY: {
-                duration: 1 + seededRandom(i * 5 + 4) * 0.5,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-                delay: i * 0.04,
-              },
-              opacity: { duration: 0.2 },
-            }}
-            className="w-[3px] md:w-1 rounded-full origin-bottom"
+          <motion.span
+            key={word}
+            className="absolute text-[8px] md:text-[10px] uppercase tracking-[0.3em] text-[#333] font-mono whitespace-nowrap"
             style={{
-              height: `${height}%`,
-              background:
-                barProgress > 0
-                  ? `linear-gradient(to top, #c0f03e, #38BDF8)`
-                  : "#1a1a1a",
-              transition: "background 0.3s ease",
+              left: "50%",
+              top: "50%",
+              transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${reverse ? 360 : -360}deg)`,
             }}
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 + i * 0.1 }}
+          >
+            {word}
+          </motion.span>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
 
-// Glitch text effect
-function GlitchText({ text, className = "" }: { text: string; className?: string }) {
+// AI brain center piece
+function AICore({ progress }: { progress: number }) {
   return (
-    <span className={`relative inline-block ${className}`}>
-      <span className="relative z-10">{text}</span>
-      <motion.span
-        aria-hidden
-        className="absolute top-0 left-0 text-[#38BDF8] z-0"
-        animate={{ x: [-1, 1, 0, -1, 0], y: [0, 1, -1, 0, 0] }}
-        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 3 }}
-        style={{ clipPath: "inset(10% 0 60% 0)" }}
-      >
-        {text}
-      </motion.span>
-      <motion.span
-        aria-hidden
-        className="absolute top-0 left-0 text-[#a855f7] z-0"
-        animate={{ x: [1, -1, 0, 1, 0], y: [0, -1, 1, 0, 0] }}
-        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 3, delay: 0.15 }}
-        style={{ clipPath: "inset(50% 0 10% 0)" }}
-      >
-        {text}
-      </motion.span>
-    </span>
-  );
-}
-
-// Letter-by-letter text reveal
-function TextReveal({ text, delay = 0 }: { text: string; delay?: number }) {
-  return (
-    <span className="inline-flex overflow-hidden">
-      {text.split("").map((char, i) => (
-        <motion.span
-          key={i}
-          initial={{ y: "120%", opacity: 0 }}
-          animate={{ y: "0%", opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: delay + i * 0.04,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="inline-block"
+    <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+      {/* Outer pulsing ring */}
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 rounded-full border border-accent/20"
+      />
+      {/* Middle ring */}
+      <motion.div
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+        className="absolute inset-4 rounded-full border border-[#1a1a1a]"
+      />
+      {/* Progress ring */}
+      <svg className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] -rotate-90">
+        <circle cx="50%" cy="50%" r="48%" fill="none" stroke="#111" strokeWidth="1" />
+        <motion.circle
+          cx="50%" cy="50%" r="48%"
+          fill="none"
+          stroke="url(#coreGrad)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeDasharray="301.6"
+          strokeDashoffset={301.6 - (301.6 * progress) / 100}
+          style={{ transition: "stroke-dashoffset 0.15s ease" }}
+        />
+        <defs>
+          <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#c0f03e" />
+            <stop offset="50%" stopColor="#38BDF8" />
+            <stop offset="100%" stopColor="#a855f7" />
+          </linearGradient>
+        </defs>
+      </svg>
+      {/* Center content */}
+      <div className="relative z-10 flex flex-col items-center">
+        {/* AI icon */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-3"
         >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
-    </span>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-accent">
+            <motion.path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </svg>
+        </motion.div>
+        <span className="text-3xl md:text-5xl font-black font-mono text-white tabular-nums">
+          {String(Math.floor(progress)).padStart(3, "0")}
+        </span>
+        <span className="text-[9px] uppercase tracking-[0.4em] text-[#444] mt-1">
+          Booting AI
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -146,15 +217,14 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
 
   const startExit = useCallback(() => {
     setExiting(true);
-    setTimeout(onComplete, 600);
+    setTimeout(onComplete, 800);
   }, [onComplete]);
 
-  // Count 0→100 in 10 steps
   useEffect(() => {
     let current = 0;
     const steps = 10;
     const increment = 100 / steps;
-    const interval = 100; // 100ms per step = 1 second total
+    const interval = 100;
 
     const timer = setInterval(() => {
       current += increment;
@@ -162,7 +232,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         current = 100;
         setProgress(100);
         clearInterval(timer);
-        setTimeout(startExit, 200);
+        setTimeout(startExit, 300);
         return;
       }
       setProgress(current);
@@ -175,100 +245,97 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
     <AnimatePresence>
       {!exiting && (
         <motion.div
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center overflow-hidden"
+          exit={{
+            scale: 1.1,
+            opacity: 0,
+            filter: "blur(20px)",
+          }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 z-[100] bg-[#030303] flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Grid overlay */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-            style={{
-              backgroundImage: "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
-          />
+          {/* Neural network background */}
+          <NeuralNetwork />
 
-          <Particles />
-
-          {/* Scanning line */}
+          {/* Scanning beam */}
           <motion.div
             initial={{ top: "-2px" }}
             animate={{ top: "100%" }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="absolute left-0 right-0 h-[1px] pointer-events-none z-20"
-            style={{ background: "linear-gradient(90deg, transparent, rgba(192,240,62,0.15), transparent)" }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            className="absolute left-0 right-0 h-[2px] pointer-events-none z-20"
+            style={{
+              background: "linear-gradient(90deg, transparent 0%, rgba(192,240,62,0.08) 20%, rgba(192,240,62,0.25) 50%, rgba(192,240,62,0.08) 80%, transparent 100%)",
+              boxShadow: "0 0 30px rgba(192,240,62,0.1)",
+            }}
           />
 
-          {/* Radial gradient backdrop */}
+          {/* Radial glow */}
           <div className="absolute inset-0 pointer-events-none">
             <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-[200px] opacity-30"
-              style={{ background: "radial-gradient(circle, rgba(192,240,62,0.08), transparent 70%)" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[180px]"
+              style={{ background: "radial-gradient(circle, rgba(192,240,62,0.05) 0%, rgba(56,189,248,0.03) 40%, transparent 70%)" }}
             />
           </div>
 
-          {/* Expanding rings */}
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ scale: 0.5, opacity: 0.3 }}
-              animate={{ scale: 2.5, opacity: 0 }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 1,
-                ease: "easeOut",
-              }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border pointer-events-none"
-              style={{ borderColor: "rgba(192,240,62,0.08)" }}
+          {/* Orbit rings with AI keywords */}
+          <div className="absolute inset-0 pointer-events-none">
+            <OrbitRing
+              words={["AGENTS", "NEURAL", "DEPLOY", "INFERENCE", "TOKENS", "EMBEDDINGS"]}
+              radius={220}
+              duration={30}
             />
-          ))}
+            <OrbitRing
+              words={["NEXT.JS", "PYTHON", "FASTAPI", "CREWAI", "LANGCHAIN", "OPENAI", "N8N", "DOCKER"]}
+              radius={300}
+              duration={45}
+              reverse
+            />
+          </div>
 
-          {/* Content */}
+          {/* Center: AI Core */}
           <div className="relative z-10 flex flex-col items-center">
-            {/* Wave bars */}
-            <WaveLoader progress={progress} />
+            <AICore progress={progress} />
 
-            {/* Counter */}
+            {/* Name */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mt-10 text-center"
             >
-              <span className="text-6xl md:text-8xl font-black font-mono text-white tabular-nums">
-                {String(Math.floor(progress)).padStart(3, "0")}
-              </span>
-              <span className="text-lg md:text-xl font-mono text-accent ml-1">%</span>
+              <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight mb-2">
+                Mehwish Fatima
+              </h1>
+              <p className="text-[10px] uppercase tracking-[0.5em] text-accent/60 mb-6">
+                Agentic AI &amp; Full-Stack Engineer
+              </p>
             </motion.div>
 
-            {/* Name with glitch */}
+            {/* Skill tags appearing */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap justify-center gap-2 max-w-md"
             >
-              <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3">
-                <GlitchText text="Mehwish Fatima" />
-              </h1>
-              <div className="overflow-hidden">
-                <motion.p
-                  initial={{ y: 30, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-xs uppercase tracking-[0.4em] text-accent/70"
+              {["Multi-Agent Systems", "Autonomous Workflows", "Full-Stack Apps", "AI Pipelines"].map((tag, i) => (
+                <motion.span
+                  key={tag}
+                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ delay: 0.5 + i * 0.08, duration: 0.4 }}
+                  className="text-[9px] uppercase tracking-[0.2em] text-[#555] border border-[#1a1a1a] rounded-full px-4 py-1.5 bg-[#0a0a0a]/50 backdrop-blur-sm"
                 >
-                  Full-Stack &amp; Agentic AI Developer
-                </motion.p>
-              </div>
+                  {tag}
+                </motion.span>
+              ))}
             </motion.div>
 
             {/* Loading bar */}
             <motion.div
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 240 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="mt-8 h-[2px] bg-[#1a1a1a] rounded-full overflow-hidden"
+              animate={{ opacity: 1, width: 200 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
+              className="mt-8 h-[2px] bg-[#111] rounded-full overflow-hidden"
             >
               <div
                 className="h-full rounded-full"
@@ -280,47 +347,49 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
               />
             </motion.div>
 
-            {/* Status text with typing effect */}
-            <div className="mt-4 flex items-center gap-2">
+            {/* Status */}
+            <div className="mt-3 flex items-center gap-2">
               <motion.span
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 0.6, repeat: Infinity }}
                 className="w-1.5 h-1.5 rounded-full bg-accent"
               />
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#444] font-mono">
-                {progress < 30 && "Loading modules"}
-                {progress >= 30 && progress < 60 && "Building interface"}
-                {progress >= 60 && progress < 90 && "Rendering components"}
-                {progress >= 90 && "Ready"}
+              <span className="text-[9px] uppercase tracking-[0.3em] text-[#333] font-mono">
+                {progress < 50 ? "Loading neural modules" : progress < 100 ? "Initializing agents" : "System ready"}
               </span>
             </div>
           </div>
 
-          {/* Corner labels */}
+          {/* Corner details */}
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute bottom-8 left-8 text-[9px] uppercase tracking-[0.3em] text-[#222] font-mono"
+            transition={{ delay: 0.3 }}
+            className="absolute bottom-6 left-8 text-[8px] uppercase tracking-[0.3em] text-[#1a1a1a] font-mono"
           >
-            Portfolio 2025
+            Portfolio &mdash; 2026
           </motion.span>
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute bottom-8 right-8 text-[9px] uppercase tracking-[0.3em] text-[#222] font-mono"
+            transition={{ delay: 0.3 }}
+            className="absolute bottom-6 right-8 text-[8px] uppercase tracking-[0.3em] text-[#1a1a1a] font-mono"
           >
             Karachi, PK
           </motion.span>
-          <motion.span
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute top-8 right-8 text-[9px] uppercase tracking-[0.3em] text-[#222] font-mono"
+            transition={{ delay: 0.3 }}
+            className="absolute top-6 left-8 flex items-center gap-2"
           >
-            v1.0
-          </motion.span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-accent/30">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-[8px] uppercase tracking-[0.3em] text-[#1a1a1a] font-mono">
+              MF.dev
+            </span>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
